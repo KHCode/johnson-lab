@@ -1,0 +1,32 @@
+#labphoto{height: auto; width: 100%;}
+#researchphoto{height: 800 px ; width: auto;}
+
+body{background-color: black;}
+h3{
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: bold ;
+    color: #11fe00;
+}
+h4{
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-size: 30px;
+    color: #11fe00;
+}
+
+h5{
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-size: 25px;
+    color: white
+}
+
+:any-link{ color:  #11fe00;
+
+}
+.card{
+    background-color: black
+}
+
+.card-columns {
+    column-count: 2;
+}
