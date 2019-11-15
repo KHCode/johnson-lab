@@ -5,6 +5,8 @@ header{
     position: absolute;
     top: 0;
     left: 20%;
+    width: 90%;
+    max-width: 960px;
     /* background-color: darkgoldenrod; */
 }
 #title-card{
