@@ -1,0 +1,31 @@
+header, section, footer{
+    background-color: black;
+    display: block;
+    margin: 0 auto;
+    width: 576px;
+}
+
+form{
+    margin: 0 auto;
+    width: 459px;
+}
+
+input, textarea{
+    width: 439px;
+    height: 27px;
+    background: ;
+    border: 1px solid #11fe00;
+    padding: 10px;
+    margin-top: 3px;
+    font-size: 0.9em;
+    color: #11fe00;
+    border-radius: 5px;
+}
+
+textarea{
+    height: 213px;
+}
+
+input:focus, textarea:focus{
+    border: 1px solid #11fe00;
+}

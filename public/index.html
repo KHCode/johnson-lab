@@ -2,40 +2,51 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!-- [if gt IE 8]><! <html class="no-js"> <![endif] -->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Johnson Lab</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/f5d551ddb0.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="index-styles.css">
+        <link rel="stylesheet" href="navbar-styles.css">
+        
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#11fe00">
-            <div class="container">
-                <a href="index.html" class="navbar-brand">Johnson Lab</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-nav-demo" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="bs-nav-demo">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="#">Research</a></li>
-                        <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
-                        <li class="nav-item"><a class="nav-link" href="papers.html">Papers</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Media</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    </ul>	
-                </div>
+        <div class="Navbar">
+            <div class="Navbar_Link Navbar_Link-brand">
+                Johnson Lab
             </div>
-        </nav>
-
+            <div class="Navbar_Link Navbar_Link-toggle">
+                <i class="fas fa-fish fa-lg"></i>
+            </div>
+            <nav class="Navbar_Items Navbar_Items--right">
+                <div class="Navbar_Link">
+                    <a href="research.html">Research</a> 
+                </div>
+                <hr/>
+                <div class="Navbar_Link">
+                    <a href="people.html">People</a> 
+                </div>
+                <hr/>
+                <div class="Navbar_Link">
+                    <a href="papers.html">Papers</a> 
+                </div>
+                <hr/>
+                <div class="Navbar_Link">
+                    <a href="contact.html">Contact</a> 
+                </div>
+            </nav>
+            
+        </div>
         <div id="container">
             <div id="title">Johnson Lab</div>
             <!-- <div id="c1" class="circle"></div>
@@ -72,6 +83,7 @@
                 <a href="#" class="menu-link">Contact</a> 
             </p>
         </div> -->
-        <script src="" async defer></script>
+        
     </body>
+    <script type="text/javascript" src="navbar.js"></script>   
 </html>
