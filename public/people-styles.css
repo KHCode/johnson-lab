@@ -1,0 +1,8 @@
+.container, .imgContainer{
+    margin: 0 10% 0 10%;
+}
+
+#labphoto{
+    max-width: 100%;
+    max-height: 100%;
+}
