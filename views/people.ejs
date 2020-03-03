@@ -1,5 +1,34 @@
 <%- include("./partials/header") %>
 
-<div class="container"><h1 style="color:white;">People Page</h1></div>
+<div class="container">
+    <!-- First row for principle investigator -->
+    <% labTitles.forEach(function(labTitles){%>
+        <div class="row">
+            <div class="my-2 mx-auto">
+                <h3><%= labTitles %></h3>
+            </div>
+        </div>
+        <br>
+        <% member.forEach(function(member){ %>
+            <% if(member.title === labTitles){ %>
+                <div class="card text-white background-color">
+                    <div class="row no-gutters justify-content-center">
+                    <div class="col-md-3">
+                        <img src="<%= member.image %>" class="card-img rounded-circle " alt="...">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                        <h5 class="card-title"><%= member.name %></h5>
+                        <p class="card-text"><%= member.bio %></p>
+                        <p class="card-text"><%= member.credentials %></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <br>
+            <% } %>
+        <% }) %>
+    <% }) %>
+</div>
 
 <%- include("./partials/footer") %>
