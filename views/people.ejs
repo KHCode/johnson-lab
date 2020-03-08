@@ -1,5 +1,10 @@
 <%- include("./partials/header") %>
 
+<div class="img-container">
+    <img src="/images/LabPhotoAnnotated2.png" class="labphoto">
+</div>
+
+
 <div class="container">
     <!-- First row for principle investigator -->
     <% labTitles.forEach(function(labTitles){%>
@@ -25,6 +30,30 @@
                     </div>
                     </div>
                 </div>
+                <br>
+            <% } %>
+        <% }) %>
+    <% }) %>
+    <h2 style="color: 11fe00;">Former Mentees</h2>
+    <% former.forEach(function(former){%>
+        <div class="row">
+            <div class="my-2 mx-auto">
+                <h3><%= former %></h3>
+            </div>
+        </div>
+        <br>
+        <% formerMember.forEach(function(formerMember){ %>
+            <% if(formerMember.title === former){ %>
+                <div class="card text-white background bg-dark">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= formerMember.name %></h5>
+                      <p class="card-text"><%= formerMember.credentials %></p>
+                      <p><%= formerMember.honors %><br></p> 
+                      <p class="card-text"><a href="<%= formerMember.researchUrl %>"><%= formerMember.researchTopic %></a></p>
+                      <p class="card-text"><a href="<%= formerMember.currentJobUrl %>"><%= formerMember.currentJob %></a></p>
+                    </div>
+                    <div class="card-footer"><%= formerMember.osuYears %></div>
+                  </div>
                 <br>
             <% } %>
         <% }) %>

@@ -1,4 +1,17 @@
-#labphoto{height: auto; width: 100%;}
+.labphoto{
+    /* top | right | bottom | left */
+    margin: -100px 0px -150px 0px;
+    max-width:100%;
+    height:auto;
+}
+
+.img-container{
+    width: auto; /* width of container */
+    height: auto; /* height of container */
+    overflow: hidden;
+    border: 5px solid black;
+}
+
 #researchphoto{height: 800 px ; width: auto;}
 
 body{
@@ -8,6 +21,10 @@ body{
 }
 
 h1{
+    color: #11fe00;
+}
+
+h2{
     color: #11fe00;
 }
 
