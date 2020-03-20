@@ -1,236 +1,51 @@
+/*/////////////////////////////////
+///Dependencies and Boilerplate///
+///////////////////////////////*/
+
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var Member = require("./models/member");
+var helpers = require("./helpers");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static('public'));
 
+/*///////////////////////////////////
+//Gathering Data.../////////////////
+/////////////////////////////////*/
+
+var labTitles = helpers.getLabTitles();
+var member = helpers.getMembers();
+var former = helpers.getFormerTitles();
+var formerMember = helpers.getFormerMembers();
+var papers = helpers.getPapers();
+var years = helpers.getYears();
+
+/*////////////////////////////////////
+/////ROUTES//////////////////////////
+//////////////////////////////////*/
+
 app.get("/", function(req, res){
 	res.render("landing");
 });
 
-var labTitles = ['Principle Investigator', 'Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students'];
-var Member = [
-	{name: 'Dr. Colin Johnson',
-	image: '/images/Johnson Base Final.jpg',
-	title: 'Principle Investigator',
-	current: true,
-	credentials: 'Ph.D 2005 - University of Illinois, Urbana Champaign; Postdoc 2005-2007 - University of Pennsylvania; Postdoc 2007-2011 - University of Wisconsin, Madison',
-	bio: 'Colin is a fan of running, comics, cycling, and beans.'},
-	{name: 'Dr. Josephine Bonventre',
-	image: '/images/bonventre1.jpg',
-	title: 'Postdoctoral Researchers',
-	current: true,
-	credentials: 'This section is for credentials.',
-	bio: 'This section is for a mini-bio.'},
-	{name: 'Aayushi Manchanda',
-	image: '/images/manchanda.jpg',
-	title: 'Graduate Students',
-	current: true,
-	credentials: 'PhD. Candidate - Molecular & Cellular Biology',
-	bio: 'Aayushi enjoys puppies and protein pull downs'},
-	{name: 'Shauna Otto',
-	image: '/images/otto1.jpg',
-	title: 'Graduate Students',
-	current: true,
-	credentials: 'PhD. Candidate - Biochemistry & Biophysics',
-	bio: 'Shauna enjoys crafting, karaoke, and membrane transport.'},
-	{name: 'James Miyasaki',
-	image: '/images/miyasaki.png',
-	title: 'Graduate Students',
-	current: true,
-	credentials: 'Master\'s Student - Biochemistry & Biophysics',
-	bio: 'This section is for a mini-bio.'},
-	{name: 'Sabrina (Jou-Ying) Lin',
-	image: '',
-	title: 'Graduate Students',
-	current: true,
-	credentials: 'Master\'s Student - Biochemistry & Biophysics',
-	bio: 'This section is for a mini-bio.'},
-	{name: 'Tanushri Kumar',
-	image: '/images/kumar.jpg',
-	title: 'Undergraduate Students',
-	current: true,
-	credentials: 'Senior - Biochemistry & Molecular Biology',
-	bio: 'This section is for a mini-bio.'},
-	{name: 'Rebecca France',
-	image: '/images/france.jpg',
-	title: 'Undergraduate Students',
-	current: true,
-	credentials: 'Junior - Biochemistry & Molecular Biology',
-	bio: 'This section is for a mini-bio.'},
-	{name: 'Susmitha Matlapudi',
-	image: '/images/matlapudi.png',
-	title: 'Undergraduate Students',
-	current: true,
-	credentials: 'Senior - Microbiology',
-	bio: 'This section is for a mini-bio.'},
-	{name: 'Chapman Kuykendall',
-	image: '/images/kuykendall.jpg',
-	title: 'Undergraduate Students',
-	current: true,
-	credentials: 'Junior - Biochemistry & Molecular Biology',
-	bio: 'Chapman is a junior BMB major originally from Phoenix, Oregon. He enjoys reading, hiking, cooking, and irritating his cat, Gato.'},
-];
-
-var former = ['Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students'];
-var formerMember = [
-	{name:'Dr. Nazish Abdullah',
-	title: 'Postdoctoral Researchers',
-	credentials:'',
-	researchTopic: 'Dysferlin Biochemistry',
-	researchUrl: '',
-	currentJob:'Scientist at Regeneron Pharmaceuticals',
-	currentJobUrl:'http://www.regeneron.com',
-	osuYears: '2011-2014'},
-	{name:'Dr. Naomi Marty-Howard',
-	title: 'Postdoctoral Researchers',
-	credentials:'',
-	researchTopic: 'Ferlin-related membrane trafficking',
-	researchUrl: '',
-	currentJob:'Regional Finance Officer at Ontario Ministry of Natural Resources & Forestry',
-	currentJobUrl:'',
-	osuYears: '2011-2012'},
-	{name:'Dr. Nicole Hams',
-	title: 'Graduate Students',
-	credentials:'M.S., PhD. - Biochemistry & Biophysics',
-	researchTopic: 'Developing single molecule methods to study conformational dynamics of ferlin proteins',
-	researchUrl: '',
-	currentJob:'Postdoctoral Researcher in the Bartholomew Lab at OSU',
-	currentJobUrl:'https://microbiology.science.oregonstate.edu/content/dr-jerri-bartholomew',
-	osuYears: '2013-2018'},
-	{name:'Dr. Chelsea Wolk-Weiss (nee Holman)',
-	title: 'Graduate Students',
-	credentials:'PhD. - Biochemistry & Biophysics',
-	researchTopic: 'Initial in vitro and in vivo Characterization of the Membrane Trafficking Protein Fer1L6',
-	researchUrl: 'https://search.library.oregonstate.edu/permalink/f/ueodtl/CP71253039520001451',
-	currentJob:'UW Biotechnology Project Management Program',
-	currentJobUrl:'',
-	osuYears: '2011-2017'},
-	{name:'Dr. Sara Codding',
-	title: 'Graduate Students',
-	credentials:'PhD. - Biochemistry & Biophysics',
-	researchTopic: 'Functional and Structural Analyses of Three Distinct proteins by Biochemical and Biophysical Techniques',
-	researchUrl: 'https://search.library.oregonstate.edu/permalink/f/ueodtl/CP71252910560001451',
-	currentJob:'Postdoctoral Researcher in the Trudeau Lab at the University of Maryland School of Medicine',
-	currentJobUrl:'https://www.medschool.umaryland.edu/profiles/Trudeau-Matthew/',
-	osuYears: '2010-2016'},
-	{name:'Dr. Murugesh Padmanarayana',
-	title: 'Graduate Students',
-	credentials: 'M.S., PhD. - Biochemistry & Biophysics',
-	researchTopic: 'Characterizing the Functional Properties of Otoferlin, Essential for Neurotransmission in Inner Hair Cells of the Cochlea',
-	researchUrl: 'https://search.library.oregonstate.edu/permalink/f/ueodtl/CP71252901380001451',
-	currentJob: 'Postdoctoral Researcher in the Dittman Lab at Weill Cornell Medical School',
-	currentJobUrl: 'https://sites.google.com/site/dittmanlabhomepage/people',
-	osuYears: '2011-2016'},
-	{name:'Dr. Paroma Chatterjee',
-	title: 'Graduate Students',
-	credentials: 'PhD. - Molecular and Cellular Biology',
-	researchTopic: 'Establishing Larval Zebrafish as an In Vivo Model Organism for Characterizing the Roles of Otoferlin, a Sensory Hair Cell Protein Essential for Hearing',
-	researchUrl: 'https://ir.library.oregonstate.edu/concern/graduate_thesis_or_dissertations/6395wb890',
-	currentJob: 'Postdoctoral Researcher in the Barr-Gillespie Lab at the Vollum Institute-OHSU',
-	currentJobUrl: 'https://www.ohsu.edu/barr-gillespie-lab/lab-members',
-	osuYears: '2011-2016'},
-	{name:'Olivia Ozguc',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: [''],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: '',
-	currentJobUrl: '',
-	osuYears: '2017-2018'},
-	{name:'Trisha Chau',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: ['Honor\'s College Thesis Student', 'SURE Awardee 2015', 'URISC Awardee 2015'],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: 'Medical Student - OHSU',
-	currentJobUrl: '',
-	osuYears: '2015-2019'},
-	{name:'Blake Hakkila',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: ['Honor\'s College Thesis Student', 'SURE Awardee 2015'],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: 'Development Engineer - e-MSion Inc',
-	currentJobUrl: '',
-	osuYears: '2016-2018'},
-	{name:'Scott Hershberger',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: ['CURE Awardee 2015'],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: '',
-	currentJobUrl: '',
-	osuYears: '2015-2018'},
-	{name:'Natalie Syverud',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: [''],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: '',
-	currentJobUrl: '',
-	osuYears: '2016'},
-	{name:'Franco Felix',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: [''],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: '',
-	currentJobUrl: '',
-	osuYears: '2016'},
-	{name:'Dana Palmer',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: [''],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: '',
-	currentJobUrl: '',
-	osuYears: '2016'},
-	{name:'Trenity Norton',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: [''],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: '',
-	currentJobUrl: '',
-	osuYears: '2014-2015'},
-	{name:'Jacob Hugel',
-	title: 'Undergraduate Students',
-	credentials: 'Biochemistry & Biophysics',
-	honors: ['Honor\'s College Thesis Student', 'URISC-START Awardee 2011'],
-	researchTopic: '',
-	researchUrl: '',
-	currentJob: 'Medical Student - Geisinger Commonwealth School of Medicine',
-	currentJobUrl: '',
-	osuYears: '2011-2015'},
-];
-
 app.get("/people", function(req, res){
-	res.render("people", {labTitles: labTitles, former: former, member: Member, formerMember: formerMember});
-})
+	res.render("people", {labTitles: labTitles, former: former, member: member, formerMember: formerMember});
+});
 
 app.get("/papers", function(req, res){
-	res.render("papers");
+	res.render("papers", {papers: papers, years: years});
 });
 
 app.get("/research", function(req, res){
 	res.render("research");
-})
+});
 
 app.get("/contact", function(req, res){
 	res.render("contact");
-})
+});
+
 app.listen(3000, function(){
 	console.log("Now serving Johnson Lab on the web!");
 });

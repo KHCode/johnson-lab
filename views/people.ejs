@@ -1,11 +1,11 @@
 <%- include("./partials/header") %>
 
-<div class="img-container">
+<section class="people img-container">
     <img src="/images/LabPhotoAnnotated2.png" class="labphoto">
-</div>
+</section>
 
 
-<div class="container">
+<section class="people container">
     <!-- First row for principle investigator -->
     <% labTitles.forEach(function(labTitles){%>
         <div class="row">
@@ -18,7 +18,7 @@
             <% if(member.title === labTitles){ %>
                 <div class="card text-white background-color">
                     <div class="row no-gutters justify-content-center">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-4">
                         <img src="<%= member.image %>" class="card-img rounded-circle " alt="...">
                     </div>
                     <div class="col-md-6">
@@ -34,7 +34,9 @@
             <% } %>
         <% }) %>
     <% }) %>
-    <h2 style="color: 11fe00;">Former Mentees</h2>
+            </section>
+<section class="container">
+    <h2>Former Mentees</h2>
     <% former.forEach(function(former){%>
         <div class="row">
             <div class="my-2 mx-auto">
@@ -42,22 +44,34 @@
             </div>
         </div>
         <br>
-        <% formerMember.forEach(function(formerMember){ %>
-            <% if(formerMember.title === former){ %>
-                <div class="card text-white background bg-dark">
-                    <div class="card-body">
-                      <h5 class="card-title"><%= formerMember.name %></h5>
-                      <p class="card-text"><%= formerMember.credentials %></p>
-                      <p><%= formerMember.honors %><br></p> 
-                      <p class="card-text"><a href="<%= formerMember.researchUrl %>"><%= formerMember.researchTopic %></a></p>
-                      <p class="card-text"><a href="<%= formerMember.currentJobUrl %>"><%= formerMember.currentJob %></a></p>
+        <% if(former === 'Postdoctoral Researchers' || former === 'Graduate Students'){ %>
+            <div class="grads former-members row">
+        <% }else if(former === 'Undergraduate Students'){ %>
+            <div class="undergrads former-members row no-gutters">
+        <% } %>
+            <% formerMember.forEach(function(formerMember){ %>
+                <% if(formerMember.title === former){ %>
+                    <% if(formerMember.title === 'Postdoctoral Researchers' || formerMember.title === 'Graduate Students'){ %>
+                        <div class="card text-white background bg-dark">
+                    <% }else if(formerMember.title === 'Undergraduate Students'){ %>
+                        <div class="card text-white background bg-dark col-sm-4 col-lg-3">
+                    <% } %>
+                        <div class="card-body">
+                        <h5 class="card-title"><%= formerMember.name %></h5>
+                        <p class="card-text"><%= formerMember.credentials %></p>
+                        <% if(formerMember.honors && formerMember.honors.length > 0){ %>
+                            <p><%= formerMember.honors %></p>
+                        <% } %>  
+                        <p class="card-text"><a href="<%= formerMember.researchUrl %>"><%= formerMember.researchTopic %></a></p>
+                        <p class="card-text"><a href="<%= formerMember.currentJobUrl %>"><%= formerMember.currentJob %></a></p>
+                        </div>
+                        <div class="card-footer"><%= formerMember.osuYears %></div>
                     </div>
-                    <div class="card-footer"><%= formerMember.osuYears %></div>
-                  </div>
-                <br>
-            <% } %>
-        <% }) %>
+                    <br>
+                <% } %>
+            <% }) %>
+        </div>
     <% }) %>
-</div>
+</section>
 
 <%- include("./partials/footer") %>

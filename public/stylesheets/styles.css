@@ -1,42 +1,27 @@
-.labphoto{
-    /* top | right | bottom | left */
-    margin: -100px 0px -150px 0px;
-    max-width:100%;
-    height:auto;
+html{/* children: head, body*/
+    font: normal 16px sans-serif;
+    background-color: #191315;
+    /* color: #11fe00; */
 }
-
-.img-container{
-    width: auto; /* width of container */
-    height: auto; /* height of container */
-    overflow: hidden;
-    border: 5px solid black;
-}
-
-#researchphoto{height: 800 px ; width: auto;}
 
 body{
-    background-color: black;
-    font-family: 'Montserrat', Helvetica, sans-serif;
+    background-color: #191315;
+    font-family: "Open Sans", sans-serif;
     margin: 0;
 }
 
-h1{
+h1, h2, h3, h4{
     color: #11fe00;
 }
 
-h2{
-    color: #11fe00;
-}
-
-h3{
+.container h3{
     font-size: 50px;
     font-weight: bold;
-    color: #11fe00;
+    text-align: center;
 }
 
 h4{
     font-size: 30px;
-    color: #11fe00;
 }
 
 h5{
@@ -44,17 +29,193 @@ h5{
     color: white
 }
 
-/* :any-link{ 
-    color:  #11fe00;
-} */
+/* Navbar Styles */
+
+.Navbar{
+    background-color: #191315;
+    display: flex;
+    padding: 16px;
+    color: #11fe00;
+    opacity: 0;
+    animation: 2s fadein forwards;
+}
+
+.Navbar a{
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.Navbar a:hover{
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.Navbar_Link-brand{
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+}
+
+.Navbar_Items{
+    display: flex;
+}
+
+.Navbar_Link{
+    padding-right: 8px;
+}
+
+.Navbar_Items--right{
+    margin-left: auto;
+}
+
+.Navbar_Link-toggle{
+    display: none;
+}
+
+.Navbar_Link a{
+    color: #11fe00;
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.Navbar_Link a:hover{
+    text-decoration: none;
+    opacity: 1;
+}
+
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #000000;
+    margin: 0;
+    padding: 0;
+}
+
+@media only screen and (max-width: 768px){
+    .Navbar_Items,
+    .Navbar{
+        flex-direction: column;
+    }
+    .Navbar_Items{
+        display: none;
+    }
+    .Navbar_Items--right{
+        margin-left: 0;
+    }
+    .Navbar_Link-toggle{
+        align-self: flex-end;
+        display: initial;
+        position: absolute;
+        cursor: pointer;
+    }
+    .Navbar_ToggleShow{
+        display: flex;
+        margin-left: auto;
+    }
+}
+
+/* Landing Page Styles */
+
+.hero{
+    /* position: relative; I took this out while trying to get the <a> tags to respond to :hover,
+                    it worked but I'm not sure why or how*/
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #F3EFF5;
+    min-height: 45vh;
+}
+
+.hero img{
+    width: 800px;
+}
+
+.hero-content-area{
+    opacity: 0;
+    margin-top: 200px;
+    animation: 1.5s heroslidefade 1s forwards;
+}
+
+@keyframes heroslidefade{
+    100%{
+        opacity: 1;
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 800px){
+    .hero img{
+        width: 600px;
+    }
+}
+
+/* People Styles */
+
+.people.img-container{ /* Holds the lab group photo */
+    width: auto; /* width of container */
+    height: auto; /* height of container */
+    overflow: hidden;
+}
+
+.people.img-container .labphoto{
+    /* top | right | bottom | left */
+    margin-top: 100px;
+    max-width:100%;
+    height:auto;
+    opacity: 0;
+    animation: 2s slidefade 1s forwards;
+}
+
+@keyframes slidefade{
+    100%{
+        margin: 0 0px -150px 0px;
+        opacity: 1;
+    }
+}
+
+.people.container{ /* Holds all of the people cards */
+    opacity: 0;
+    animation: 2s fadein 2s forwards;
+}
+
+@keyframes fadein{
+    100%{
+        opacity: 1;
+    }
+}
+
+section:not(.img-container, .hero):nth-child(even){
+    background-color: #454955;
+}
+
+.former-members{
+    justify-content: space-between;
+}
+
+section.container{
+    border-radius: 5px;
+    margin-bottom: 15px;
+    /* align-items: flex-start; */
+}
+
+.undergrads .card{
+    text-align: center;
+    word-wrap: normal;
+}
+
+#researchphoto{height: 800 px ; width: auto;}
 
 .card{
-    background-color: black
+    background-color: #191315;
+    margin: 10px;
+    border: none;
 }
 
-.card-columns {
+/* .card-columns {
     column-count: 2;
-}
+} */
+
+/* Contact Styles */
 
 label{
     display: block;
@@ -62,3 +223,4 @@ label{
     letter-spacing: 2px;
     color: #11fe00;
 }
+

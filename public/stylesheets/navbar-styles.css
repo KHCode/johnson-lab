@@ -1,8 +1,23 @@
 .Navbar{
-    background-color: #11fe00;
+    background-color: #191315;
     display: flex;
     padding: 16px;
-    font-family: 'Montserrat', sans-serif;
+    color: #11fe00;
+}
+
+.Navbar a{
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.Navbar a:hover{
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.Navbar_Link-brand{
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
 }
 
 .Navbar_Items{
@@ -21,17 +36,16 @@
     display: none;
 }
 
-/* .fas{
-    color: #000000;
-} */
-
-.Navbar_Link > a{
-    color: #000000;
+.Navbar_Link a{
+    color: #11fe00;
     text-decoration: none;
+    opacity: 0.7;
 }
-/* .fa-fish{
-    margin-bottom: 5px;
-} */
+
+.Navbar_Link a:hover{
+    text-decoration: none;
+    opacity: 1;
+}
 
 hr{
     display: block;
