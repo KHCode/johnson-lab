@@ -14,6 +14,12 @@ h1, h2, h3, h4{
     color: #11fe00;
 }
 
+h1{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
 .container h3{
     font-size: 50px;
     font-weight: bold;
@@ -215,12 +221,77 @@ section.container{
     column-count: 2;
 } */
 
+/* Papers Styles */
+
+.papers.img-container{/* Holds the papers page banner photo */
+    width: auto; /* width of container */
+    height: auto; /* height of container */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background-color: #191315;
+}
+
+.papers.img-container .labphoto{
+    /* top | right | bottom | left */
+    margin-top: 170px;
+    margin-bottom: 20px;
+    max-width:100%;
+    height:auto;
+    opacity: 0;
+    animation: 2s papersslidefade 1s forwards;
+}
+
+@keyframes papersslidefade{
+    100%{
+        margin: 70px 0px -10px 0px;
+        opacity: 1;
+    }
+}
+
+.papers.container{ /* Holds all of the paper cards */
+    margin-top: 40px;
+    opacity: 0;
+    animation: 2s fadein 2s forwards;
+}
+
+.papers h1{
+    margin-bottom: 50px;
+}
+
+.papers.container .row{
+    align-items: center;
+}
+
+.paper-card{
+    padding: 10px;
+}
+
+.paper-card:nth-child(even){
+    background-color: #454955;
+}
+
 /* Contact Styles */
 
-label{
+.contact.jumbotron{
+    margin: 150px 45px;
+    opacity: 0;
+    animation: 1.5s fadein forwards;
+    /* vertical-align: center; */
+    background-color: #95D9C3;
+    color: #ffff;
+}
+
+.contact.jumbotron h1{
+    color: #ffff;
+}
+
+/* label{
     display: block;
     margin-top: 20px;
     letter-spacing: 2px;
     color: #11fe00;
-}
+} */
 
