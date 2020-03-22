@@ -15,9 +15,8 @@ h1, h2, h3, h4{
 }
 
 h1{
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
-    text-align: center;
 }
 
 .container h3{
@@ -276,6 +275,7 @@ section.container{
 /* Contact Styles */
 
 .contact.jumbotron{
+    justify-content: flex-start;
     margin: 150px 45px;
     opacity: 0;
     animation: 1.5s fadein forwards;
