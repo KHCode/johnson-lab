@@ -321,6 +321,10 @@ section.container{
 	border: solid #11fe00;
 	border-radius: 15px;
 }
+
+.research.jumbotron hr{
+	background-color: #11fe00;
+}
 /* label{
     display: block;
     margin-top: 20px;
