@@ -1,8 +1,0 @@
-.imgContainer{
-    height: 1500px; /* height of container */
-    overflow: hidden;
-}
-
-.imgContainer img{
-    margin: -10px 0px 0px -180px;
-}

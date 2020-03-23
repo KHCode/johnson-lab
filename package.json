@@ -1,7 +1,7 @@
 {
-  "name": "begin-app",
+  "name": "johnson-lab",
   "version": "0.0.0",
-  "description": "A simple Begin app with the minimum necessary file structure",
+  "description": "A simple web app for the Oregon State BB Department Johnson Lab",
   "main": "index.js",
   "scripts": {
     "lint": "# Your linter would go here",

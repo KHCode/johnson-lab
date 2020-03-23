@@ -1,5 +1,6 @@
 <%- include("./partials/header") %>
 
+<<<<<<< HEAD
 <img id="papersHeader" src="/images/papers/PapersHeader.JPG">
 <% papers.forEach(function(papers){%>
 	<div class="card text-white background-color">
@@ -17,5 +18,39 @@
 	 </div>
 	</div>
 <% }) %>
+=======
+<section class="papers img-container">
+    <img src="/images/papers/PapersHeader.JPG" class="labphoto">
+</section>
+>>>>>>> 4e4a991c7b6763e8a2f293b261a6acd15f020742
 
+<section class="papers container">
+    <h1>Papers</h1>
+    <% years.forEach(function(year){ %>
+        <div class="row">
+            <div class="my-2 mx-auto">
+                <h3><%= year %></h3>
+            </div>
+        </div>
+        <br>
+        <% papers.forEach(function(paper){ %>
+            <% if(paper.year == year){ %>
+                <div class="paper-card card text-white background-color">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-md-3">
+                            <img src="<%= paper.image %>" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= paper.title %></h5>
+                                <p class="card-text"><a href="<%= paper.url %>"><%= paper.citation %></a></p>
+                                <p class="card-text"><%= paper.authors %><br><br><%= paper.abstract %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }) %>
+    <% }) %>
+</section>
 <%- include("./partials/footer") %>
