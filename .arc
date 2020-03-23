@@ -4,7 +4,11 @@ wander-hag
 @static
 
 @http
-
+get /
+get /research
+get /people
+get /papers
+get /contact
 
 @tables
 data
