@@ -46,33 +46,6 @@ app.get("/contact", function(req, res){
 	res.render("contact");
 });
 
-<<<<<<< HEAD
-app.post("/contact", function(req, res){
-	var name = req.body.name
-  	var email = req.body.email
-  	var message = req.body.message
-  	var content = `name: ${name} \n email: ${email} \n message: ${message} `
-	mail = {
-		to: 'kristopher.hill@gmail.com',
-		subject: 'New Message from Johnson Lab Online',
-		body: content
-	}
-	
-	transporter.sendMail(mail, function(err, data){
-		if(err){
-			console.log(err);
-		    console.log(info.envelope);
-    		console.log(info.messageId);
-		}else{
-			console.log("Email sent: " + info.response);
-		}
-	})
-	console.log(req.body);
-	res.redirect("/contact");
-});
-
-=======
->>>>>>> 4e4a991c7b6763e8a2f293b261a6acd15f020742
 app.listen(3000, function(){
 	console.log("Now serving Johnson Lab on the web!");
 });
