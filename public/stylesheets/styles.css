@@ -9,7 +9,6 @@
     width: auto; /* width of container */
     height: auto; /* height of container */
     overflow: hidden;
-    border: 5px solid black;
 }
 
 #researchphoto{height: 800 px ; width: auto;}
@@ -61,4 +60,26 @@ label{
     margin-top: 20px;
     letter-spacing: 2px;
     color: #11fe00;
+}
+
+#papersHeader{
+	display: block;
+	margin: 0 auto;
+}
+
+input{
+	display: block;
+	margin: 0 0;
+}
+
+.contact-form{
+	margin: 0 auto;
+}
+
+form{
+	padding: 0;
+}
+
+.contact-header{
+	margin-top: 50px;
 }
