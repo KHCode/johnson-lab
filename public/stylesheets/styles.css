@@ -258,6 +258,8 @@ section.container{
 
 .papers h1{
     margin-bottom: 50px;
+	text-align: center;
+	font-size: 80px; 
 }
 
 .papers.container .row{
@@ -280,18 +282,52 @@ section.container{
     opacity: 0;
     animation: 1.5s fadein forwards;
     /* vertical-align: center; */
-    background-color: #95D9C3;
-    color: #ffff;
+    background-color: #191315;
+    color: #11fe00;
+	border: solid #11fe00;
+	border-radius: 15px;
 }
 
 .contact.jumbotron h1{
-    color: #ffff;
+    color: #11fe00;
 }
 
+.contact.jumbotron hr{
+	background-color: #11fe00;
+}
+
+.contact.jumbotron .container h1{
+    margin-top: 15px;
+}
+
+.contact.jumbotron .row{
+	margin-bottom: 10px;
+}
+
+.contact.jumbotron .col-12{
+	padding: 0;
+}
+
+/* Research Styles */
+
+.research.jumbotron{
+	justify-content: flex-start;
+    margin: 150px 45px;
+    opacity: 0;
+    animation: 1.5s fadein forwards;
+    /* vertical-align: center; */
+    background-color: #191315;
+    color: #11fe00;
+	border: solid #11fe00;
+	border-radius: 15px;
+}
+
+.research.jumbotron hr{
+	background-color: #11fe00;
+}
 /* label{
     display: block;
     margin-top: 20px;
     letter-spacing: 2px;
     color: #11fe00;
-} */
 
