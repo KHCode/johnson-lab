@@ -2,10 +2,11 @@
 ///Dependencies and Boilerplate///
 ///////////////////////////////*/
 
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var helpers = require("./helpers");
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const helpers = require("./helpers");
+const { pool } = require('./config');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -16,7 +17,15 @@ app.use(express.static('public'));
 /////////////////////////////////*/
 
 var labTitles = helpers.getLabTitles();
-var member = helpers.getMembers();
+// pool.query('SELECT * FROM members', (err, res) => {
+// 	// console.log(res.rows[0]);
+// 	// console.log(res.rows[0].name);
+// 	res.locals.members = res.rows;
+// 	pool.end();
+// });		//helpers.getMembers();
+// console.log(res.locals.members);
+
+var members = helpers.getMembers();
 var former = helpers.getFormerTitles();
 var formerMember = helpers.getFormerMembers();
 var papers = helpers.getPapers();
@@ -30,7 +39,14 @@ app.get("/", function(req, res){
 	res.render("landing");
 });
 
-app.get("/people", function(req, res){
+app.get("/people", function(req, res, next){
+	pool.query('SELECT * FROM members', (err, res) => {
+		// console.log(res.rows[0]);
+		// console.log(res.rows[0].name);
+		res.locals.members = res.rows;
+		pool.end();
+	});		//helpers.getMembers();
+	console.log(res.locals.members);
 	res.render("people", {labTitles: labTitles, former: former, member: member, formerMember: formerMember});
 });
 
