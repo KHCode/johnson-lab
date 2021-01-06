@@ -7,8 +7,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const helpers = require("./helpers");
 const { pool } = require('./config');
-const { init_member_table } = require('./init');
-const { get_all_members, split_members } = require('./database/dbHelpers');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -34,18 +32,30 @@ var years = helpers.getYears();
 /*////////////////////////////////////
 /////ROUTES//////////////////////////
 //////////////////////////////////*/
-// init_member_table();
+
 app.get("/", function(req, res){
 	res.render("landing");
 });
 
-app.get("/people", get_all_members, split_members, function(req, res, next){
-	res.send("No Errors, I guess?");
-	console.log("Current Members:")
-	console.log(res.locals.current_members)
-	console.log("Former Members:")
-	console.log(res.locals.former_members)
-	//res.render("people", {labTitles: labTitles, former: former, member: member, formerMember: formerMember});
+app.get("/people", async function(req, res, next){
+	const client = await pool.connect()
+    const result = await client.query('SELECT * FROM member')
+    client.release()
+
+    res.locals.members = result.rows;
+	// res.send("No Errors, I guess?");
+	let current_members = [];
+    let former_members = [];
+    for (let i = 0; i < res.locals.members.length; i++) {
+        res.locals.members[i].current ? current_members.push(res.locals.members[i]) : former_members.push(res.locals.members[i]);
+    }
+
+    app.locals.current_members = current_members;
+	app.locals.former_members = former_members;
+	app.locals.lab_titles = ['Principle Investigator', 'Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students'];
+	app.locals.former_types = ['Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students']
+
+	res.render("people", {labTitles: app.locals.lab_titles, formerMember: app.locals.former_members, current: app.locals.current_members, formerTypes: app.locals.former_types});
 });
 
 app.get("/papers", function(req, res){

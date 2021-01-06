@@ -14,18 +14,18 @@
             </div>
         </div>
         <br>
-        <% member.forEach(function(member){ %>
-            <% if(member.title === labTitles){ %>
+        <% current.forEach(function(current){ %>
+            <% if(current.title === labTitles){ %>
                 <div class="card text-white background-color">
                     <div class="row no-gutters justify-content-center">
                     <div class="col-md-3 col-sm-4">
-                        <img src="<%= member.image %>" class="card-img rounded-circle " alt="...">
+                        <img src="<%= current.image %>" class="card-img rounded-circle " alt="...">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
-                        <h5 class="card-title"><%= member.name %></h5>
-                        <p class="card-text"><%= member.bio %></p>
-                        <p class="card-text"><%= member.credentials %></p>
+                        <h5 class="card-title"><%= current.name %></h5>
+                        <p class="card-text"><%= current.bio %></p>
+                        <p class="card-text"><%= current.credentials %></p>
                         </div>
                     </div>
                     </div>
@@ -37,20 +37,20 @@
 </section>
 <section class="container">
     <h2>Former Mentees</h2>
-    <% former.forEach(function(former){%>
+    <% formerTypes.forEach(function(formerTypes){%>
         <div class="row">
             <div class="my-2 mx-auto">
-                <h3><%= former %></h3>
+                <h3><%= formerTypes %></h3>
             </div>
         </div>
         <br>
-        <% if(former === 'Postdoctoral Researchers' || former === 'Graduate Students'){ %>
+        <% if(formerTypes === 'Postdoctoral Researchers' || formerTypes === 'Graduate Students'){ %>
             <div class="grads former-members row">
-        <% }else if(former === 'Undergraduate Students'){ %>
+        <% }else if(formerTypes === 'Undergraduate Students'){ %>
             <div class="undergrads former-members row no-gutters">
         <% } %>
             <% formerMember.forEach(function(formerMember){ %>
-                <% if(formerMember.title === former){ %>
+                <% if(formerMember.title === formerTypes){ %>
                     <% if(formerMember.title === 'Postdoctoral Researchers' || formerMember.title === 'Graduate Students'){ %>
                         <div class="card text-white background bg-dark">
                     <% }else if(formerMember.title === 'Undergraduate Students'){ %>
