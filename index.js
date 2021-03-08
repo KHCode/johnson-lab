@@ -16,18 +16,66 @@ app.use(express.static('public'));
 //Gathering Data.../////////////////
 /////////////////////////////////*/
 
-var labTitles = helpers.getLabTitles();
+let labTitles = helpers.getLabTitles();
+let members = helpers.getMembers();
+let papers = helpers.getPapers();
+let years = helpers.getYears();
+
+
 // pool.query('SELECT * FROM members', (err, res) => {
 // 	// console.log(res.rows[0]);
 // 	// console.log(res.rows[0].name);
-// 	res.locals.members = res.rows;
+// 	app.locals.members = res.rows;
 // 	pool.end();
 // });		//helpers.getMembers();
-// console.log(res.locals.members);
+// console.log(app.locals.members);
 
-var members = helpers.getMembers();
-var papers = helpers.getPapers();
-var years = helpers.getYears();
+(async () => {
+	const client = await pool.connect();
+	try {
+		await client.query('BEGIN');
+		const queryString = 'SELECT * FROM member';
+		const result = await client.query(queryString);
+		result.rows.forEach(el => console.log(el));
+		app.locals.members = result.rows;
+		app.locals.members.forEach( el => {
+			if(el.current){
+				
+			}
+			
+			switch (el.title){
+				case('Principle Investigator'): 
+					//save PI data separately
+					break;
+				case('Postdoctoral Researchers'):
+					//create array of current post-doc members
+					break;
+				case('Graduate Students'):
+					//create array of current grad/phd members
+					break;
+				case('Undergraduate Students'):
+					//create array of current undergrad members
+					break;
+				case()
+				//create array of former post-doc members
+				//create array of former grad/phd members
+				//create array of former undergrad members
+			}
+					
+			console.log(el.name)
+		});
+
+		// const 
+		await client.query('COMMIT');
+	} catch (e) {
+		await client.query('ROLLBACK');
+		throw e;
+	} finally {
+	  	client.release();
+	}
+})().catch(e => console.error(e.message, e.stack));
+
+
 
 /*////////////////////////////////////
 /////ROUTES//////////////////////////
