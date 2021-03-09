@@ -12,3 +12,4 @@ var Member = [
 	credentials: 'This section is for credentials.',
 	bio: 'This section is for a mini-bio.'}
 ];
+

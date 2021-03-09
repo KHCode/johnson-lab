@@ -36,7 +36,7 @@ pool.query('SELECT * FROM member', (err, res) => {
 			if(el.current){
 				switch (el.title){
 					case('Principle Investigator'): 
-						app.locals.primeInvestigator = {...el};//save PI data separately
+						app.locals.principleInvestigator = {...el};//save PI data separately
 						break;
 					case('Postdoctoral Researchers'):
 						app.locals.currentPostDocs.push({...el});//create array of current post-doc members
@@ -81,24 +81,31 @@ app.get("/", function(req, res){
 });
 
 app.get("/people", async function(req, res, next){
-	const client = await pool.connect()
-    const result = await client.query('SELECT * FROM member')
-    client.release()
+	// const client = await pool.connect()
+    // const result = await client.query('SELECT * FROM member')
+    // client.release()
 
-    res.locals.members = result.rows;
-	// res.send("No Errors, I guess?");
-	let current_members = [];
-    let former_members = [];
-    for (let i = 0; i < res.locals.members.length; i++) {
-        res.locals.members[i].current ? current_members.push(res.locals.members[i]) : former_members.push(res.locals.members[i]);
-    }
+    // res.locals.members = result.rows;
+	// let current_members = [];
+    // let former_members = [];
+    // for (let i = 0; i < res.locals.members.length; i++) {
+    //     res.locals.members[i].current ? current_members.push(res.locals.members[i]) : former_members.push(res.locals.members[i]);
+    // }
 
     // app.locals.current_members = current_members;
 	// app.locals.former_members = former_members;
 	// app.locals.lab_titles = ['Principle Investigator', 'Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students'];
 	// app.locals.former_types = ['Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students']
 
-	res.render("people", {labTitles: app.locals.lab_titles, formerMember: app.locals.former_members, current: app.locals.current_members, formerTypes: app.locals.former_types});
+	res.render("people", {
+			principleInvestigator: app.locals.principleInvestigator,
+			currentPostDocs: app.locals.currentPostDocs, 
+			currentGrads: app.locals.currentGrads, 
+			currentUndergrads: app.locals.currentUndergrads, 
+			formerPostDocs: app.locals.formerPostDocs,
+			formerGrads: app.locals.formerGrads,
+			formerUndergrads: app.locals.formerUndergrads
+		});
 });
 
 app.get("/papers", function(req, res){
