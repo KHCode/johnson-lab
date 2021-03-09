@@ -21,61 +21,56 @@ let members = helpers.getMembers();
 let papers = helpers.getPapers();
 let years = helpers.getYears();
 
+app.locals.currentPostDocs = new Array();
+app.locals.currentGrads = new Array();
+app.locals.currentUndergrads = new Array();
+app.locals.formerPostDocs = new Array();
+app.locals.formerGrads = new Array();
+app.locals.formerUndergrads = new Array();
 
-// pool.query('SELECT * FROM members', (err, res) => {
-// 	// console.log(res.rows[0]);
-// 	// console.log(res.rows[0].name);
-// 	app.locals.members = res.rows;
-// 	pool.end();
-// });		//helpers.getMembers();
-// console.log(app.locals.members);
-
-(async () => {
-	const client = await pool.connect();
-	try {
-		await client.query('BEGIN');
-		const queryString = 'SELECT * FROM member';
-		const result = await client.query(queryString);
-		result.rows.forEach(el => console.log(el));
-		app.locals.members = result.rows;
-		app.locals.members.forEach( el => {
+pool.query('SELECT * FROM member', (err, res) => {
+	if(err) {
+		console.error(err.stack);
+	} else {
+		res.rows.forEach( el => {
 			if(el.current){
+				switch (el.title){
+					case('Principle Investigator'): 
+						app.locals.primeInvestigator = {...el};//save PI data separately
+						break;
+					case('Postdoctoral Researchers'):
+						app.locals.currentPostDocs.push({...el});//create array of current post-doc members
+						break;
+					case('Graduate Students'):
+						app.locals.currentGrads.push({...el});//create array of current grad/phd members
+						break;
+					case('Undergraduate Students'):
+						app.locals.currentUndergrads.push({...el});//create array of current undergrad members
+						break;
+					default:
+						break;
+				}
+			} else {
+				switch(el.title){
+					case('Postdoctoral Researchers'):
+						app.locals.formerPostDocs.push({...el});//create array of former post-doc members
+						break;
+					case('Graduate Students'):
+						app.locals.formerGrads.push({...el});//create array of former grad/phd members
+						break;
+					case('Undergraduate Students'):	
+						app.locals.formerUndergrads.push({...el});//create array of former undergrad members
+						break;
+					default:
+						break;
+				}
 				
 			}
-			
-			switch (el.title){
-				case('Principle Investigator'): 
-					//save PI data separately
-					break;
-				case('Postdoctoral Researchers'):
-					//create array of current post-doc members
-					break;
-				case('Graduate Students'):
-					//create array of current grad/phd members
-					break;
-				case('Undergraduate Students'):
-					//create array of current undergrad members
-					break;
-				case()
-				//create array of former post-doc members
-				//create array of former grad/phd members
-				//create array of former undergrad members
-			}
 					
-			console.log(el.name)
-		});
-
-		// const 
-		await client.query('COMMIT');
-	} catch (e) {
-		await client.query('ROLLBACK');
-		throw e;
-	} finally {
-	  	client.release();
+			console.log(el.name);
+		})
 	}
-})().catch(e => console.error(e.message, e.stack));
-
-
+})
 
 /*////////////////////////////////////
 /////ROUTES//////////////////////////
@@ -98,10 +93,10 @@ app.get("/people", async function(req, res, next){
         res.locals.members[i].current ? current_members.push(res.locals.members[i]) : former_members.push(res.locals.members[i]);
     }
 
-    app.locals.current_members = current_members;
-	app.locals.former_members = former_members;
-	app.locals.lab_titles = ['Principle Investigator', 'Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students'];
-	app.locals.former_types = ['Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students']
+    // app.locals.current_members = current_members;
+	// app.locals.former_members = former_members;
+	// app.locals.lab_titles = ['Principle Investigator', 'Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students'];
+	// app.locals.former_types = ['Postdoctoral Researchers', 'Graduate Students', 'Undergraduate Students']
 
 	res.render("people", {labTitles: app.locals.lab_titles, formerMember: app.locals.former_members, current: app.locals.current_members, formerTypes: app.locals.former_types});
 });
