@@ -67,7 +67,7 @@ pool.query('SELECT * FROM member', (err, res) => {
 				
 			}
 					
-			console.log(el.name);
+			// console.log(el.name);
 		})
 	}
 })
