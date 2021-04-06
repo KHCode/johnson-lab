@@ -1,24 +1,33 @@
-html{/* children: head, body*/
-    font: normal 16px sans-serif;
-    background-color: #191315;
-    /* color: #11fe00; */
+:root {
+    --color-background: #191315;
+    --font-color-primary: #11fe00;
+    --font-primary: "Open Sans", sans-serif;
 }
 
-body{
-    background-color: #191315;
-    font-family: "Open Sans", sans-serif;
+*,
+*::before,
+*::after {
     margin: 0;
+    box-sizing: border-box;
 }
 
-h1, h2, h3, h4{
-    color: #11fe00;
+body,
+h1,
+h2,
+h3,
+p {
+    background-color: var(--color-background);
+    font-family: var(--font-primary);
+    color: var(--font-color-primary)
 }
 
-h1{
-    font-size: 30px;
-    font-weight: bold;
+a{
+    color: var(--font-color-primary);
+    text-decoration: none;
 }
 
+
+/* TODO: Refactor header styles to select with class names */
 .container h3{
     font-size: 50px;
     font-weight: bold;
@@ -156,14 +165,13 @@ hr{
 
 /* People Styles */
 
-.people.img-container{ /* Holds the lab group photo */
-    width: auto; /* width of container */
-    height: auto; /* height of container */
+/*.people-img-container{ 
+    width: auto; 
+    height: auto; 
     overflow: hidden;
 }
 
-.people.img-container .labphoto{
-    /* top | right | bottom | left */
+.lab-photo{
     margin-top: 100px;
     max-width:100%;
     height:auto;
@@ -178,7 +186,7 @@ hr{
     }
 }
 
-.people.container{ /* Holds all of the people cards */
+.people.container{ 
     opacity: 0;
     animation: 2s fadein 2s forwards;
 }
@@ -200,7 +208,6 @@ section:not(.img-container, .hero):nth-child(even){
 section.container{
     border-radius: 5px;
     margin-bottom: 15px;
-    /* align-items: flex-start; */
 }
 
 .undergrads .card{
@@ -214,7 +221,7 @@ section.container{
     background-color: #191315;
     margin: 10px;
     border: none;
-}
+} */
 
 /* Papers Styles */
 
