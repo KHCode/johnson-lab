@@ -1,51 +1,51 @@
 <%- include("./partials/header") %>
 
-<section class="people img-container">
-    <img src="/images/LabPhotoAnnotated2.png" class="labphoto">
+<section class="people-img-container">
+    <img src="/images/LabPhoto.jpg" class="lab-photo">
 </section>
 
-<div>
+<section class="people-pi">
     <h1>Principle Investigator:</h1>
     <%= principleInvestigator.name %> 
-</div>
+</section>
 
-<div>
-    <h1>Current:</h1>
-    <ul>Postdocs
+<section class="people-current">
+    <h1 class="current-title">Current:</h1>
+    <ul class="list-current-postdocs">Postdocs
         <% currentPostDocs.forEach((postdoc) => { %>
             <li><%= postdoc.name %></li>
         <% }) %>
     </ul>
-    <ul>Grad Research Assistants
+    <ul class="list-current-grads">Grad Research Assistants
         <% currentGrads.forEach((grad) => { %>
             <li><%= grad.name %></li>
         <% }) %>
     </ul>
-    <ul>Undergrad Research Assistants
+    <ul class="list-current-undergrads">Undergrad Research Assistants
         <% currentUndergrads.forEach((undergrad) => { %>
             <li><%= undergrad.name %></li>
         <% }) %>
     </ul>
-</div>
+</section>
 
-<div>
-    <h1>Former:</h1>
-    <ul>Postdocs
+<section class="people-former">
+    <h1 class="former-title">Former:</h1>
+    <ul class="list-former-postdocs">Postdocs
         <% formerPostDocs.forEach((postdoc) => { %>
             <li><%= postdoc.name %></li>
         <% }) %>
     </ul>
-    <ul>Grad Research Assistants
+    <ul class="list-former-grads">Grad Research Assistants
         <% formerGrads.forEach((grad) => { %>
             <li><%= grad.name %></li>
         <% }) %>
     </ul>
-    <ul>Undergrad Research Assistants
+    <ul class="list-former-undergrads">Undergrad Research Assistants
         <% formerUndergrads.forEach((undergrad) => { %>
             <li><%= undergrad.name %></li>
         <% }) %>
     </ul>
-</div>
+</section>
 
 <!-- <section class="people container">
     <% //labTitles.forEach(function(labTitles){%>
