@@ -28,7 +28,7 @@ a{
 
 
 /* TODO: Refactor header styles to select with class names */
-.container h3{
+/* .container h3{
     font-size: 50px;
     font-weight: bold;
     text-align: center;
@@ -41,17 +41,19 @@ h4{
 h5{
     font-size: 25px;
     color: white
-}
+} */
 
 /* Navbar Styles */
+.fixed-top{
+    position: sticky;
+    top: 0;
+}
 
 .Navbar{
     background-color: #191315;
     display: flex;
     padding: 16px;
     color: #11fe00;
-    opacity: 0;
-    animation: 2s fadein forwards;
 }
 
 .Navbar a{
@@ -165,28 +167,80 @@ hr{
 
 /* People Styles */
 
-/*.people-img-container{ 
+.people-img-container{ 
     width: auto; 
     height: auto; 
     overflow: hidden;
 }
 
 .lab-photo{
-    margin-top: 100px;
     max-width:100%;
     height:auto;
-    opacity: 0;
-    animation: 2s slidefade 1s forwards;
+    margin-top: -9rem;
+    margin-bottom: 3rem;
 }
 
-@keyframes slidefade{
-    100%{
-        margin: 0 0px -150px 0px;
-        opacity: 1;
+.people-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+}
+
+.people-main-title{
+    font-size: 3rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: var(--font-color-primary) 0.5rem solid;
+    text-align: center;
+}
+
+.people-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media only screen and (min-device-width: 800px){
+    .people-card{
+        flex-direction: row;
     }
 }
 
-.people.container{ 
+.people-avatar{
+    width: 25%;
+    border-radius: 50%;
+    align-self: center;
+    margin: 1rem;
+}
+
+.people-body{
+    margin-left: 0.7rem;
+}
+
+.people-name{
+    color: white;
+}
+
+@media only screen and (min-device-width: 1400px){
+    .people-name{
+        font-size: 2rem;
+    }
+    
+    .people-credentials, .people-bio{
+        font-size: 1.5rem;
+    }
+}
+
+.list-current-postdocs, .list-current-grads, .list-current-undergrads{
+    padding-inline-start: 0;
+    list-style: none;
+}
+
+/*.people.container{ 
     opacity: 0;
     animation: 2s fadein 2s forwards;
 }
@@ -226,8 +280,8 @@ section.container{
 /* Papers Styles */
 
 .papers.img-container{/* Holds the papers page banner photo */
-    width: auto; /* width of container */
-    height: auto; /* height of container */
+    width: auto; 
+    height: auto; 
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -237,12 +291,11 @@ section.container{
 }
 
 .papers.img-container .labphoto{
-    /* top | right | bottom | left */
     margin-top: 170px;
     margin-bottom: 20px;
     max-width:100%;
     height:auto;
-    opacity: 0;
+    opacity: 1;
     animation: 2s papersslidefade 1s forwards;
 }
 
@@ -255,7 +308,7 @@ section.container{
 
 .papers.container{ /* Holds all of the paper cards */
     margin-top: 40px;
-    opacity: 0;
+    opacity: 1;
     animation: 2s fadein 2s forwards;
 }
 
@@ -282,9 +335,8 @@ section.container{
 .contact.jumbotron{
     justify-content: flex-start;
     margin: 150px 45px;
-    opacity: 0;
+    opacity: 1;
     animation: 1.5s fadein forwards;
-    /* vertical-align: center; */
     background-color: #191315;
     color: #11fe00;
 	border: solid #11fe00;
@@ -313,16 +365,38 @@ section.container{
 
 /* Research Styles */
 
-.research.jumbotron{
+.research{
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
 	justify-content: flex-start;
-    margin: 150px 45px;
-    opacity: 0;
-    animation: 1.5s fadein forwards;
-    /* vertical-align: center; */
+    width: 70%;
     background-color: #191315;
-    color: #11fe00;
-	border: solid #11fe00;
-	border-radius: 15px;
+    color: var(--font-color-primary);
+	border: solid var(--font-color-primary);
+	border-radius: 1.5rem;
+}
+
+.research-title{
+    display: inline-block;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border-bottom: solid var(--font-color-primary) 0.4rem;
+    letter-spacing: 0.6rem;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.research-body{
+    display: inline-block;
+    padding: 2.5rem 4rem;
+    border-radius: 1.5rem;
+    letter-spacing: 0.1rem;
+    line-height: 2;
+    font-size: 1.5rem;
+    text-align: justify;
 }
 
 .research.jumbotron hr{

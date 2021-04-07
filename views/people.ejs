@@ -4,48 +4,89 @@
     <img src="/images/LabPhoto.jpg" class="lab-photo">
 </section>
 
-<section class="people-pi">
-    <h1>Principle Investigator:</h1>
-    <%= principleInvestigator.name %> 
-</section>
+<main class="people-container">
+    <h1 class="people-main-title">Members of the Lab</h1>
 
-<section class="people-current">
-    <h1 class="current-title">Current:</h1>
-    <ul class="list-current-postdocs">Postdocs
-        <% currentPostDocs.forEach((postdoc) => { %>
-            <li><%= postdoc.name %></li>
-        <% }) %>
-    </ul>
-    <ul class="list-current-grads">Grad Research Assistants
-        <% currentGrads.forEach((grad) => { %>
-            <li><%= grad.name %></li>
-        <% }) %>
-    </ul>
-    <ul class="list-current-undergrads">Undergrad Research Assistants
-        <% currentUndergrads.forEach((undergrad) => { %>
-            <li><%= undergrad.name %></li>
-        <% }) %>
-    </ul>
-</section>
+    <section class="people-pi">
+        <h1>Principle Investigator</h1>
+        <div class="people-card">
+            <img class="people-avatar" src="<%= principleInvestigator.image  %>" alt="<%= principleInvestigator.name %>"/>
+            <div class="people-body">
+                <h5 class="people-name"><%= principleInvestigator.name %></h5>
+                <p class="people-credentials"><%= principleInvestigator.credentials %></p> 
+                <p class="people-bio"><%= principleInvestigator.bio %></p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="people-current">
+        <h2 class="current-title">Current Postdoc(s)</h2>
+        <ul class="list-current-postdocs">
+            <% currentPostDocs.forEach((postdoc) => { %>
+                <li>
+                    <div class="people-card">
+                        <img class="people-avatar" src="<%= postdoc.image  %>" alt="<%= postdoc.name %>"/>
+                        <div class="people-body">
+                            <h5 class="people-name"><%= postdoc.name %></h5>
+                            <p class="people-credentials"><%= postdoc.credentials %></p> 
+                            <p class="people-bio"><%= postdoc.bio %></p>
+                        </div>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+        <h2 class="current-title">Current Grad Research Assistants</h2>
+        <ul class="list-current-grads">
+            <% currentGrads.forEach((grad) => { %>
+                <li>
+                    <div class="people-card">
+                        <img class="people-avatar" src="<%= grad.image  %>" alt="<%= grad.name %>"/>
+                        <div class="people-body">
+                            <h5 class="people-name"><%= grad.name %></h5>
+                            <p class="people-credentials"><%= grad.credentials %></p> 
+                            <p class="people-bio"><%= grad.bio %></p>
+                        </div>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+        <h2 class="current-title">Current Undergrad Research Assistants</h2>
+        <ul class="list-current-undergrads">
+            <% currentUndergrads.forEach((undergrad) => { %>
+                <li>
+                    <div class="people-card">
+                        <img class="people-avatar" src="<%= undergrad.image  %>" alt="<%= undergrad.name %>"/>
+                        <div class="people-body">
+                            <h5 class="people-name"><%= undergrad.name %></h5>
+                            <p class="people-credentials"><%= undergrad.credentials %></p> 
+                            <p class="people-bio"><%= undergrad.bio %></p>
+                        </div>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </section>
+    
+    <section class="people-former">
+        <h1 class="former-title">Former</h1>
+        <ul class="list-former-postdocs">Postdocs
+            <% formerPostDocs.forEach((postdoc) => { %>
+                <li><%= postdoc.name %></li>
+            <% }) %>
+        </ul>
+        <ul class="list-former-grads">Grad Research Assistants
+            <% formerGrads.forEach((grad) => { %>
+                <li><%= grad.name %></li>
+            <% }) %>
+        </ul>
+        <ul class="list-former-undergrads">Undergrad Research Assistants
+            <% formerUndergrads.forEach((undergrad) => { %>
+                <li><%= undergrad.name %></li>
+            <% }) %>
+        </ul>
+    </section>
+</main>
 
-<section class="people-former">
-    <h1 class="former-title">Former:</h1>
-    <ul class="list-former-postdocs">Postdocs
-        <% formerPostDocs.forEach((postdoc) => { %>
-            <li><%= postdoc.name %></li>
-        <% }) %>
-    </ul>
-    <ul class="list-former-grads">Grad Research Assistants
-        <% formerGrads.forEach((grad) => { %>
-            <li><%= grad.name %></li>
-        <% }) %>
-    </ul>
-    <ul class="list-former-undergrads">Undergrad Research Assistants
-        <% formerUndergrads.forEach((undergrad) => { %>
-            <li><%= undergrad.name %></li>
-        <% }) %>
-    </ul>
-</section>
 
 <!-- <section class="people container">
     <% //labTitles.forEach(function(labTitles){%>
