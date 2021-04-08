@@ -235,47 +235,27 @@ hr{
     }
 }
 
-.list-current-postdocs, .list-current-grads, .list-current-undergrads{
+.list-current-postdocs, 
+.list-current-grads, 
+.list-current-undergrads,
+.list-former-postdocs,
+.list-former-grads,
+.list-former-undergrads{
     padding-inline-start: 0;
     list-style: none;
 }
 
-/*.people.container{ 
-    opacity: 0;
-    animation: 2s fadein 2s forwards;
-}
-
-@keyframes fadein{
-    100%{
-        opacity: 1;
-    }
-}
-
-section:not(.img-container, .hero):nth-child(even){
-    background-color: #454955;
-}
-
-.former-members{
-    justify-content: space-between;
-}
-
-section.container{
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.undergrads .card{
+.people-container > section > h1, h2{
     text-align: center;
-    word-wrap: normal;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: solid var(--font-color-primary) 0.1rem;
 }
 
-#researchphoto{height: 800 px ; width: auto;}
-
-.card{
-    background-color: #191315;
-    margin: 10px;
-    border: none;
-} */
+.people-card > h5, p, img{
+    display: inline-block;
+}
 
 /* Papers Styles */
 

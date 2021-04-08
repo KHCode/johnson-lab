@@ -68,18 +68,27 @@
     </section>
     
     <section class="people-former">
-        <h1 class="former-title">Former</h1>
-        <ul class="list-former-postdocs">Postdocs
+        <h2 class="current-title">Former Postdoc(s)</h2>
+        <ul class="list-former-postdocs">
             <% formerPostDocs.forEach((postdoc) => { %>
-                <li><%= postdoc.name %></li>
+                <li>
+                    <div class="people-card">
+                        <h5 class="people-name"><%= postdoc.name %> | <%= postdoc.osu_years %> </h5>
+                        <p class="people-research"><%= postdoc.research_topic %></p>
+                        <p class="people-paper-link"><a href="<%= postdoc.research_url %>">View their research here</a></p>
+                        <p class="people-new-job">Currently: <a href="<%= postdoc.current_job_url ? postdoc.current_job_url : '#' %>"><%= postdoc.current_job %></a></p>
+                    </div>
+                </li>
             <% }) %>
         </ul>
-        <ul class="list-former-grads">Grad Research Assistants
+        <h2 class="current-title">Former Graduate Research Assistants</h2>
+        <ul class="list-former-grads">
             <% formerGrads.forEach((grad) => { %>
                 <li><%= grad.name %></li>
             <% }) %>
         </ul>
-        <ul class="list-former-undergrads">Undergrad Research Assistants
+        <h2 class="current-title">Former Undergraduate Research Assistants</h2>
+        <ul class="list-former-undergrads">
             <% formerUndergrads.forEach((undergrad) => { %>
                 <li><%= undergrad.name %></li>
             <% }) %>
