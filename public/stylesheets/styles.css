@@ -202,6 +202,7 @@ hr{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    padding: 2rem 0;
 }
 
 @media only screen and (min-device-width: 800px){
@@ -217,33 +218,33 @@ hr{
     margin: 1rem;
 }
 
-@media screen and (min-width: 700px) {
-    .people-avatar{
-        width: 20%;
-    }
-}
-
-@media screen and (min-width: 800px) {
-    .people-avatar{
-        width: 15%;
-    }
-}
-
 .people-body{
     margin-left: 0.7rem;
 }
 
 .people-name{
     color: white;
+    text-align: center;
 }
 
-@media only screen and (min-device-width: 1400px){
+@media screen and (min-width: 800px) {
     .people-name{
-        font-size: 2rem;
+        font-size: 2.5rem;
+        text-align: left;
     }
-    
     .people-credentials, .people-bio{
         font-size: 1.5rem;
+    }
+    .people-avatar{
+        width: 20%;
+        align-self: flex-start;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .people-card {
+        /* margin-right: 1rem; */
+        max-width: 50rem;
     }
 }
 
