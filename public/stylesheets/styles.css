@@ -211,10 +211,22 @@ hr{
 }
 
 .people-avatar{
-    width: 25%;
+    width: 35%;
     border-radius: 50%;
     align-self: center;
     margin: 1rem;
+}
+
+@media screen and (min-width: 700px) {
+    .people-avatar{
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .people-avatar{
+        width: 15%;
+    }
 }
 
 .people-body{

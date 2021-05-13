@@ -25,7 +25,7 @@
             <% currentPostDocs.forEach((postdoc) => { %>
                 <li>
                     <div class="people-card">
-                        <img class="people-avatar" src="<%= postdoc.image  %>" alt="<%= postdoc.name %>"/>
+                        <img class="people-avatar" src="<%= postdoc.image ? postdoc.image : blankAvatar %>" alt="<%= postdoc.name %>"/>
                         <div class="people-body">
                             <h5 class="people-name"><%= postdoc.name %></h5>
                             <p class="people-credentials"><%= postdoc.credentials %></p> 
@@ -35,12 +35,12 @@
                 </li>
             <% }) %>
         </ul>
-        <h2 class="current-title">Current Grad Research Assistants</h2>
+        <h2 class="current-title">Current Graduate Research Assistants</h2>
         <ul class="list-current-grads">
             <% currentGrads.forEach((grad) => { %>
                 <li>
                     <div class="people-card">
-                        <img class="people-avatar" src="<%= grad.image  %>" alt="<%= grad.name %>"/>
+                        <img class="people-avatar" src="<%= grad.image ? grad.image : blankAvatar %>" alt="<%= grad.name %>"/>
                         <div class="people-body">
                             <h5 class="people-name"><%= grad.name %></h5>
                             <p class="people-credentials"><%= grad.credentials %></p> 
@@ -50,12 +50,12 @@
                 </li>
             <% }) %>
         </ul>
-        <h2 class="current-title">Current Undergrad Research Assistants</h2>
+        <h2 class="current-title">Current Undergraduate Research Assistants</h2>
         <ul class="list-current-undergrads">
             <% currentUndergrads.forEach((undergrad) => { %>
                 <li>
                     <div class="people-card">
-                        <img class="people-avatar" src="<%= undergrad.image  %>" alt="<%= undergrad.name %>"/>
+                        <img class="people-avatar" src="<%= undergrad.image ? undergrad.image : blankAvatar %>" alt="<%= undergrad.name %>"/>
                         <div class="people-body">
                             <h5 class="people-name"><%= undergrad.name %></h5>
                             <p class="people-credentials"><%= undergrad.credentials %></p> 

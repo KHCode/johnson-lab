@@ -104,7 +104,8 @@ app.get("/people", async function(req, res, next){
 			currentUndergrads: app.locals.currentUndergrads, 
 			formerPostDocs: app.locals.formerPostDocs,
 			formerGrads: app.locals.formerGrads,
-			formerUndergrads: app.locals.formerUndergrads
+			formerUndergrads: app.locals.formerUndergrads,
+			blankAvatar: '/images/blank-avatar.svg'
 		});
 });
 
