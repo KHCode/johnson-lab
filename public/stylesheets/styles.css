@@ -219,21 +219,35 @@ hr{
 }
 
 .people-body{
-    margin-left: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .people-name{
     color: white;
     text-align: center;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.people-credentials, .people-bio{
+    text-align: center;
+    letter-spacing: 0.15rem;
 }
 
 @media screen and (min-width: 800px) {
+    .people-body{
+        align-items: flex-start;
+        padding-left: 1rem;
+    }
     .people-name{
         font-size: 2.5rem;
         text-align: left;
     }
     .people-credentials, .people-bio{
         font-size: 1.5rem;
+        text-align: left;
     }
     .people-avatar{
         width: 20%;
