@@ -168,17 +168,25 @@ hr{
 /* People Styles */
 
 .people-img-container{ 
-    width: auto; 
+    /* width: auto; 
     height: auto; 
-    overflow: hidden;
+    overflow: hidden; */
+    /* mask-image: linear-gradient(to top, rgba(0,0,0,1) 80%, transparent 100%); */
 }
 
 .lab-photo{
+    /* max-width:100%;
+    height:auto;
+    margin-top: -1rem;
+    margin-bottom: 3rem; */
+    background-image: url("/images/LabPhoto.jpg");
+}
+/* .lab-photo{
     max-width:100%;
     height:auto;
-    margin-top: -9rem;
+    margin-top: -1rem;
     margin-bottom: 3rem;
-}
+} */
 
 .people-container{
     display: flex;
@@ -197,7 +205,7 @@ hr{
     text-align: center;
 }
 
-.people-card{
+.people-card, .people-card-current{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -206,8 +214,9 @@ hr{
 }
 
 @media only screen and (min-device-width: 800px){
-    .people-card{
+    .people-card-current{
         flex-direction: row;
+        justify-content: space-between;
     }
 }
 
@@ -231,26 +240,49 @@ hr{
     margin-bottom: 1rem;
 }
 
-.people-credentials, .people-bio{
+.people-year{
+    color: white;
+    letter-spacing: 0.2rem;
+    padding: 0 2.7rem 0.7rem;
+    margin-bottom: 0.7rem;
+    border-bottom: solid white 0.1rem;
+}
+
+.people-credentials,
+.people-bio,
+.people-research,
+.people-job-link{
     text-align: center;
     letter-spacing: 0.15rem;
+    margin-bottom: 0.8rem;
+}
+
+.people-paper-link, .people-new-job{
+    color: white;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1rem;
+}
+
+.people-research, .people-job-link{
+    color: var(--font-color-primary);
 }
 
 @media screen and (min-width: 800px) {
     .people-body{
-        align-items: flex-start;
-        padding-left: 1rem;
+        flex: 1;
     }
     .people-name{
         font-size: 2.5rem;
-        text-align: left;
+    }
+    .people-year{
+        font-size: 1.5rem;
     }
     .people-credentials, .people-bio{
-        font-size: 1.5rem;
-        text-align: left;
+        font-size: 1.25rem;
+        padding: 0 1rem;
     }
     .people-avatar{
-        width: 20%;
+        width: 25%;
         align-self: flex-start;
     }
 }
@@ -271,6 +303,27 @@ hr{
     padding-inline-start: 0;
     list-style: none;
 }
+
+.list-former-postdocs{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.list-former-postdocs > li{
+    text-align: center;
+}
+
+.list-divider-icon{
+    width: 3rem;
+    padding-top: 2rem;
+}
+
+/* @media screen and (min-width: 600px){
+    .list-former-postdocs{
+        margin: 0 2rem;
+    }
+} */
 
 .people-container > section > h1, h2{
     text-align: center;

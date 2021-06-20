@@ -1,15 +1,16 @@
 <%- include("./partials/header") %>
 
-<section class="people-img-container">
-    <img src="/images/LabPhoto.jpg" class="lab-photo">
-</section>
-
 <main class="people-container">
+    <section class="people-img-container">
+        <!-- <img src="/images/LabPhoto.jpg" class="lab-photo"> -->
+        <div class="lab-photo"></div>
+    </section>
+
     <h1 class="people-main-title">Members of the Lab</h1>
 
     <section class="people-pi">
         <h1>Principle Investigator</h1>
-        <div class="people-card">
+        <div class="people-card-current">
             <img class="people-avatar" src="<%= principleInvestigator.image  %>" alt="<%= principleInvestigator.name %>"/>
             <div class="people-body">
                 <h5 class="people-name"><%= principleInvestigator.name %></h5>
@@ -24,7 +25,7 @@
         <ul class="list-current-postdocs">
             <% currentPostDocs.forEach((postdoc) => { %>
                 <li>
-                    <div class="people-card">
+                    <div class="people-card-current">
                         <img class="people-avatar" src="<%= postdoc.image ? postdoc.image : blankAvatar %>" alt="<%= postdoc.name %>"/>
                         <div class="people-body">
                             <h5 class="people-name"><%= postdoc.name %></h5>
@@ -39,7 +40,7 @@
         <ul class="list-current-grads">
             <% currentGrads.forEach((grad) => { %>
                 <li>
-                    <div class="people-card">
+                    <div class="people-card-current">
                         <img class="people-avatar" src="<%= grad.image ? grad.image : blankAvatar %>" alt="<%= grad.name %>"/>
                         <div class="people-body">
                             <h5 class="people-name"><%= grad.name %></h5>
@@ -54,7 +55,7 @@
         <ul class="list-current-undergrads">
             <% currentUndergrads.forEach((undergrad) => { %>
                 <li>
-                    <div class="people-card">
+                    <div class="people-card-current">
                         <img class="people-avatar" src="<%= undergrad.image ? undergrad.image : blankAvatar %>" alt="<%= undergrad.name %>"/>
                         <div class="people-body">
                             <h5 class="people-name"><%= undergrad.name %></h5>
@@ -70,21 +71,34 @@
     <section class="people-former">
         <h2 class="current-title">Former Postdoc(s)</h2>
         <ul class="list-former-postdocs">
-            <% formerPostDocs.forEach((postdoc) => { %>
+            <% formerPostDocs.forEach((postdoc, idx) => { %>
                 <li>
                     <div class="people-card">
-                        <h5 class="people-name"><%= postdoc.name %> | <%= postdoc.osu_years %> </h5>
-                        <p class="people-research"><%= postdoc.research_topic %></p>
-                        <p class="people-paper-link"><a href="<%= postdoc.research_url %>">View their research here</a></p>
-                        <p class="people-new-job">Currently: <a href="<%= postdoc.current_job_url ? postdoc.current_job_url : '#' %>"><%= postdoc.current_job %></a></p>
+                        <h5 class="people-name"><%= postdoc.name %></h5>
+                        <h5 class="people-year"><%= postdoc.osu_years %></h5>
+                        <p class="people-paper-link">View their research in </p>
+                            <em class="people-research"><a href="<%= postdoc.research_url %>"><%= postdoc.research_topic %></a></em>
+                        <p class="people-new-job">Currently: </p>
+                            <em class="people-job-link"><a href="<%= postdoc.current_job_url ? postdoc.current_job_url : '#' %>"><%= postdoc.current_job %></a></em>
+                        <img class="list-divider-icon" src="<%= idx < formerPostDocs.length - 1 ? iconFlask : '' %>" />
                     </div>
                 </li>
             <% }) %>
         </ul>
         <h2 class="current-title">Former Graduate Research Assistants</h2>
         <ul class="list-former-grads">
-            <% formerGrads.forEach((grad) => { %>
-                <li><%= grad.name %></li>
+            <% formerGrads.forEach((grad, idx) => { %>
+                <li>
+                    <div class="people-card">
+                        <h5 class="people-name"><%= grad.name %></h5>
+                        <h5 class="people-year"><%= grad.osu_years %></h5>
+                        <p class="people-paper-link">View their research in </p>
+                            <em class="people-research"><a href="<%= grad.research_url %>"><%= grad.research_topic %></a></em>
+                        <p class="people-new-job">Currently: </p>
+                            <em class="people-job-link"><a href="<%= grad.current_job_url ? grad.current_job_url : '#' %>"><%= grad.current_job %></a></em>
+                        <img class="list-divider-icon" src="<%= idx < formerGrads.length - 1 ? iconFlask : '' %>" />
+                    </div>
+                </li>
             <% }) %>
         </ul>
         <h2 class="current-title">Former Undergraduate Research Assistants</h2>

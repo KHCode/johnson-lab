@@ -105,7 +105,8 @@ app.get("/people", async function(req, res, next){
 			formerPostDocs: app.locals.formerPostDocs,
 			formerGrads: app.locals.formerGrads,
 			formerUndergrads: app.locals.formerUndergrads,
-			blankAvatar: '/images/blank-avatar.svg'
+			blankAvatar: '/images/blank-avatar.svg',
+			iconFlask: '/images/icon-flask.svg'
 		});
 });
 
